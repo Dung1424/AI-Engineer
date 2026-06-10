@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-label="Gradient descent moves toward minimum">
+  <rect width="720" height="420" fill="#f8fafc"/>
+  <line x1="80" y1="340" x2="640" y2="340" stroke="#334155" stroke-width="2"/>
+  <line x1="120" y1="360" x2="120" y2="60" stroke="#334155" stroke-width="2"/>
+  <path d="M115 85 C180 320 270 340 360 340 C450 340 540 320 605 85" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <g fill="#dc2626">
+    <circle cx="570" cy="180" r="8"/>
+    <circle cx="520" cy="250" r="8"/>
+    <circle cx="475" cy="295" r="8"/>
+    <circle cx="435" cy="320" r="8"/>
+    <circle cx="398" cy="333" r="8"/>
+  </g>
+  <path d="M560 195 L530 238" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-red)"/>
+  <path d="M510 262 L485 288" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-red)"/>
+  <path d="M465 302 L444 316" stroke="#dc2626" stroke-width="4" marker-end="url(#arrow-red)"/>
+  <text x="275" y="385" font-family="Arial, sans-serif" font-size="24" fill="#0f172a">đi ngược hướng gradient để giảm loss</text>
+  <defs>
+    <marker id="arrow-red" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#dc2626"/>
+    </marker>
+  </defs>
+</svg>
+

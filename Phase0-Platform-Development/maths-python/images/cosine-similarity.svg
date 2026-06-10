@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-label="Cosine similarity compares vector directions">
+  <rect width="720" height="420" fill="#f8fafc"/>
+  <line x1="100" y1="330" x2="620" y2="330" stroke="#334155" stroke-width="2"/>
+  <line x1="120" y1="360" x2="120" y2="70" stroke="#334155" stroke-width="2"/>
+  <path d="M120 330 L500 115" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#arrow-blue)"/>
+  <path d="M120 330 L525 220" stroke="#16a34a" stroke-width="5" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M185 320 A90 90 0 0 1 205 286" stroke="#f97316" stroke-width="4" fill="none"/>
+  <text x="510" y="110" font-family="Arial, sans-serif" font-size="24" fill="#1d4ed8">a</text>
+  <text x="535" y="220" font-family="Arial, sans-serif" font-size="24" fill="#15803d">b</text>
+  <text x="215" y="300" font-family="Arial, sans-serif" font-size="22" fill="#c2410c">góc</text>
+  <text x="95" y="392" font-family="Arial, sans-serif" font-size="22" fill="#0f172a">cosine similarity cao khi góc nhỏ</text>
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#16a34a"/>
+    </marker>
+  </defs>
+</svg>
+

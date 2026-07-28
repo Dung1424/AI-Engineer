@@ -448,7 +448,194 @@ Từ trong email là evidence.
 Evidence làm tăng hoặc giảm niềm tin email là spam.
 ```
 
-## 17. Ứng Dụng Trong AI
+## 17. Ví Dụ Toán Học Và Thực Tiễn
+
+### Ví dụ 1: Tung xúc sắc và quy tắc cộng
+
+Ví dụ toán học:
+
+```text
+Tung một xúc sắc công bằng.
+
+A = ra số chẵn = {2, 4, 6}
+B = ra số lớn hơn 4 = {5, 6}
+```
+
+Ta có:
+
+```text
+P(A) = 3/6
+P(B) = 2/6
+P(A and B) = {6} = 1/6
+```
+
+Vậy:
+
+```text
+P(A or B) = P(A) + P(B) - P(A and B)
+          = 3/6 + 2/6 - 1/6
+          = 4/6
+```
+
+Ví dụ thực tiễn:
+
+```text
+Trong hệ thống lọc user:
+A = user đã mua hàng
+B = user đã thêm sản phẩm vào giỏ
+```
+
+Nếu muốn tính tỷ lệ user thuộc ít nhất một nhóm, ta cần dùng union đúng cách để không đếm trùng.
+
+### Ví dụ 2: Xác suất có điều kiện trong click quảng cáo
+
+Ví dụ toán học:
+
+```text
+1.000 user nhìn thấy quảng cáo.
+200 user là user cũ.
+80 user cũ click quảng cáo.
+```
+
+Tính:
+
+```text
+P(click | user cũ) = 80 / 200 = 0.4
+```
+
+Nếu tổng số user click là 120:
+
+```text
+P(user cũ | click) = 80 / 120 = 0.667
+```
+
+Giải thích:
+
+```text
+P(click | user cũ) khác P(user cũ | click).
+Một cái hỏi xác suất click khi biết user cũ.
+Một cái hỏi xác suất user là user cũ khi biết họ đã click.
+```
+
+Ví dụ thực tiễn:
+
+```text
+Marketing team muốn biết user cũ có dễ click hơn user mới không.
+Data scientist cần đọc đúng xác suất có điều kiện để không kết luận sai.
+```
+
+### Ví dụ 3: Bayes trong test bệnh
+
+Ví dụ toán học:
+
+```text
+P(bệnh) = 1%
+P(dương tính | bệnh) = 99%
+P(dương tính | không bệnh) = 5%
+```
+
+Tính evidence:
+
+```text
+P(dương tính)
+= P(dương tính | bệnh) * P(bệnh)
+  + P(dương tính | không bệnh) * P(không bệnh)
+= 0.99 * 0.01 + 0.05 * 0.99
+= 0.0099 + 0.0495
+= 0.0594
+```
+
+Tính posterior:
+
+```text
+P(bệnh | dương tính)
+= 0.99 * 0.01 / 0.0594
+= 0.1667
+```
+
+Ví dụ thực tiễn:
+
+```text
+Dù test nghe rất chính xác, xác suất thật sự bị bệnh sau khi dương tính chỉ khoảng 16.7%.
+Lý do là bệnh hiếm, nên dương tính giả chiếm tỷ lệ lớn.
+```
+
+Ý nghĩa AI:
+
+- Prior rất quan trọng.
+- Với class hiếm như fraud detection, chỉ nhìn accuracy hoặc một xác suất đơn lẻ dễ gây hiểu sai.
+
+### Ví dụ 4: Softmax trong phân loại ảnh
+
+Ví dụ toán học:
+
+Model xuất logits:
+
+```text
+cat = 2.0
+dog = 1.0
+car = 0.1
+```
+
+Softmax biến logits thành xác suất:
+
+```text
+P(cat) ≈ 0.659
+P(dog) ≈ 0.242
+P(car) ≈ 0.099
+```
+
+Ví dụ thực tiễn:
+
+```text
+App nhận diện ảnh không chỉ trả lời "cat",
+mà còn có thể trả về mức tự tin cho từng class.
+```
+
+Ý nghĩa AI:
+
+- Class có xác suất cao nhất là dự đoán cuối cùng.
+- Cross-entropy sẽ phạt model nếu xác suất dành cho nhãn đúng quá thấp.
+
+### Ví dụ 5: Sampling trong language model
+
+Ví dụ toán học:
+
+Sau prompt `"Tôi muốn học"`, model có phân phối:
+
+```text
+P("AI") = 0.45
+P("Python") = 0.30
+P("toán") = 0.15
+P("nấu ăn") = 0.10
+```
+
+Nếu chọn argmax:
+
+```text
+Luôn chọn "AI"
+```
+
+Nếu sampling:
+
+```text
+Thỉnh thoảng chọn "Python", "toán", hoặc từ khác theo xác suất.
+```
+
+Ví dụ thực tiễn:
+
+```text
+Generative AI có thể tạo nhiều câu trả lời khác nhau cho cùng một prompt
+vì nó sampling từ phân phối xác suất, không chỉ lấy một đáp án cố định.
+```
+
+Ý nghĩa AI:
+
+- Temperature thấp làm output ổn định hơn.
+- Temperature cao làm output đa dạng hơn nhưng dễ sai hơn.
+- Đây là xác suất xuất hiện trực tiếp trong sản phẩm AI hằng ngày.
+
+## 18. Ứng Dụng Trong AI
 
 Probability xuất hiện trong:
 
@@ -461,7 +648,7 @@ Probability xuất hiện trong:
 - Sampling trong generative AI.
 - Uncertainty estimation.
 
-## 18. Lỗi Hay Nhầm
+## 19. Lỗi Hay Nhầm
 
 - Nhầm `P(A | B)` với `P(B | A)`.
 - Nghĩ test chính xác 99% nghĩa là xác suất bị bệnh sau khi dương tính cũng 99%.
@@ -469,7 +656,7 @@ Probability xuất hiện trong:
 - Nghĩ softmax confidence luôn là xác suất đúng tuyệt đối.
 - Quên rằng xác suất của biến liên tục tại đúng một điểm thường bằng 0.
 
-## 19. Bài Tập
+## 20. Bài Tập
 
 ### Cơ bản
 
@@ -489,7 +676,7 @@ Probability xuất hiện trong:
 2. Giải thích vì sao cross-entropy phạt nặng khi model tự tin nhưng sai.
 3. Tìm ví dụ trong language model: vì sao cùng một prompt có thể sinh ra nhiều câu trả lời khác nhau?
 
-## 20. Checklist Cần Nhớ
+## 21. Checklist Cần Nhớ
 
 - Probability đo mức độ không chắc chắn.
 - Random variable biến kết quả ngẫu nhiên thành số.
@@ -498,4 +685,3 @@ Probability xuất hiện trong:
 - Bayes cập nhật prior thành posterior bằng evidence.
 - Cross-entropy là loss rất quan trọng trong classification.
 - Softmax biến logits thành xác suất.
-

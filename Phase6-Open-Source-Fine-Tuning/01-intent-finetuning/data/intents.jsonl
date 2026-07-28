@@ -1,0 +1,20 @@
+{"text":"Đơn hàng của tôi đang ở đâu","label":"order_status"}
+{"text":"Bao giờ tôi nhận được hàng","label":"order_status"}
+{"text":"Kiểm tra vận chuyển đơn A102","label":"order_status"}
+{"text":"Tôi muốn trả lại sản phẩm","label":"refund"}
+{"text":"Xin hoàn tiền cho giao dịch này","label":"refund"}
+{"text":"Sản phẩm lỗi tôi cần hoàn tiền","label":"refund"}
+{"text":"Làm sao đổi mật khẩu","label":"account"}
+{"text":"Tôi không đăng nhập được","label":"account"}
+{"text":"Tài khoản của tôi bị khóa","label":"account"}
+{"text":"Sản phẩm này giá bao nhiêu","label":"product_info"}
+{"text":"Cho tôi thông tin gói Pro","label":"product_info"}
+{"text":"Mẫu này còn hàng không","label":"product_info"}
+{"text":"Theo dõi giúp đơn B205","label":"order_status"}
+{"text":"Đơn của tôi giao chậm","label":"order_status"}
+{"text":"Hủy và hoàn lại tiền","label":"refund"}
+{"text":"Tôi bị tính phí hai lần","label":"refund"}
+{"text":"Cập nhật email tài khoản","label":"account"}
+{"text":"Không nhận được mã đăng nhập","label":"account"}
+{"text":"So sánh gói Free và Pro","label":"product_info"}
+{"text":"Sản phẩm hỗ trợ ngôn ngữ nào","label":"product_info"}

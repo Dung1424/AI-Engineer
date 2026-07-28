@@ -14,9 +14,10 @@ Mỗi chương được viết theo cùng một cấu trúc:
 4. Ví dụ tính tay
 5. Python Lab
 6. Ứng dụng trong AI
-7. Lỗi hay nhầm
-8. Bài tập
-9. Checklist cần nhớ
+7. Ví dụ toán học và thực tiễn
+8. Lỗi hay nhầm
+9. Bài tập
+10. Checklist cần nhớ
 
 Bạn nên đọc bằng mắt trước, sau đó mới chạy code. Toán cho AI không phải học thuộc công
 thức thật nhiều; quan trọng là nhìn thấy công thức đang mô tả hành vi nào của dữ liệu
@@ -124,3 +125,10 @@ Mini project phù hợp sau 4 chương:
 - Viết spam classifier đơn giản.
 - Train linear regression bằng gradient descent tự viết.
 
+## Ghi Chú Về Ví Dụ
+
+Mỗi chương có thêm khoảng 5 ví dụ kết hợp giữa:
+
+- Ví dụ toán học: tính tay từng bước để hiểu công thức.
+- Ví dụ thực tiễn: tình huống sản phẩm, dữ liệu hoặc model thật.
+- Ý nghĩa AI: khái niệm đó xuất hiện ở đâu trong machine learning hoặc deep learning.

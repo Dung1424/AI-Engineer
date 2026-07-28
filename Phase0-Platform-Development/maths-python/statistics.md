@@ -326,7 +326,183 @@ Cách đọc:
 - Nếu `area` tương quan cao với `price`, đó là feature đáng chú ý.
 - Nếu `age` tương quan âm, nhà cũ có xu hướng rẻ hơn.
 
-## 13. Ứng Dụng Trong AI
+## 13. Ví Dụ Toán Học Và Thực Tiễn
+
+### Ví dụ 1: Mean và median trong lương nhân viên
+
+Ví dụ toán học:
+
+```text
+lương = [8, 9, 10, 11, 100] triệu
+
+mean = (8 + 9 + 10 + 11 + 100) / 5
+     = 138 / 5
+     = 27.6 triệu
+
+median = 10 triệu
+```
+
+Giải thích:
+
+```text
+Mean = 27.6 triệu nghe có vẻ công ty trả lương rất cao.
+Nhưng median = 10 triệu cho thấy người ở giữa chỉ nhận 10 triệu.
+```
+
+Ví dụ thực tiễn:
+
+```text
+Một vài lương rất cao của quản lý kéo mean lên.
+Median phản ánh người điển hình tốt hơn trong trường hợp dữ liệu lệch.
+```
+
+Ý nghĩa AI:
+
+- Khi phân tích dữ liệu user, chỉ nhìn mean có thể bị outlier đánh lừa.
+- Median hữu ích khi dữ liệu có giá trị cực đoan như doanh thu, thời gian xem video, giá đơn hàng.
+
+### Ví dụ 2: Variance để hiểu độ ổn định điểm số
+
+Ví dụ toán học:
+
+```text
+Lớp A = [8, 8, 8, 8, 8]
+Lớp B = [5, 7, 8, 9, 11]
+```
+
+Cả hai lớp có mean:
+
+```text
+mean_A = 8
+mean_B = 8
+```
+
+Nhưng variance:
+
+```text
+variance_A = 0
+variance_B > 0
+```
+
+Giải thích:
+
+```text
+Lớp A ổn định tuyệt đối.
+Lớp B có cùng trung bình nhưng học lực phân tán hơn.
+```
+
+Ví dụ thực tiễn:
+
+```text
+Hai model có accuracy trung bình giống nhau,
+nhưng model có performance dao động thấp hơn qua nhiều tập test thường đáng tin hơn.
+```
+
+Ý nghĩa AI:
+
+- Không chỉ nhìn metric trung bình.
+- Cần xem độ dao động giữa các lần train, các fold, hoặc các nhóm user.
+
+### Ví dụ 3: Correlation giữa diện tích và giá nhà
+
+Ví dụ toán học:
+
+```text
+area  = [50, 70, 100, 120]
+price = [300, 420, 600, 720]
+```
+
+Khi `area` tăng, `price` cũng tăng gần tuyến tính.
+
+Python:
+
+```python
+import numpy as np
+
+area = [50, 70, 100, 120]
+price = [300, 420, 600, 720]
+
+print(np.corrcoef(area, price)[0, 1])  # gần 1
+```
+
+Ví dụ thực tiễn:
+
+```text
+Trong bài toán dự đoán giá nhà, diện tích thường là feature quan trọng.
+Correlation cao giúp ta phát hiện feature đáng thử trong model.
+```
+
+Lưu ý:
+
+```text
+Correlation cao không chứng minh diện tích là nguyên nhân duy nhất.
+Vị trí, pháp lý, nội thất, tuổi nhà cũng ảnh hưởng giá.
+```
+
+### Ví dụ 4: Standardization khi feature khác scale
+
+Ví dụ toán học:
+
+```text
+diện tích = [50, 100, 150]       đơn vị m2
+số phòng = [1, 2, 3]             đơn vị phòng
+```
+
+Nếu đưa trực tiếp vào model:
+
+```text
+diện tích có giá trị lớn hơn nhiều so với số phòng.
+```
+
+Standardization:
+
+```text
+z = (x - mean) / std
+```
+
+Sau scaling, cả hai feature được đưa về thang đo tương đương hơn.
+
+Ví dụ thực tiễn:
+
+```text
+Model dự đoán giá nhà dùng diện tích, số phòng, tuổi nhà.
+Nếu không scale, gradient descent có thể ưu tiên feature có số lớn hơn chỉ vì scale.
+```
+
+Ý nghĩa AI:
+
+- Logistic regression, SVM, neural network thường train ổn định hơn khi feature được scale.
+- Scaling phải fit trên train set, rồi transform validation/test để tránh data leakage.
+
+### Ví dụ 5: Sampling để ước lượng hành vi user
+
+Ví dụ toán học:
+
+```text
+App có 1.000.000 user.
+Ta lấy sample 10.000 user để ước lượng thời gian dùng app trung bình.
+```
+
+Nếu sample ngẫu nhiên và đủ đại diện:
+
+```text
+sample mean có thể gần population mean.
+```
+
+Ví dụ thực tiễn:
+
+```text
+Không cần phân tích toàn bộ log khổng lồ mỗi lần thử ý tưởng.
+Có thể lấy sample để kiểm tra nhanh xu hướng.
+```
+
+Ý nghĩa AI:
+
+- Khi dữ liệu quá lớn, sampling giúp EDA nhanh hơn.
+- Nhưng nếu sample lệch, model có thể học lệch.
+- Ví dụ chỉ lấy user trả phí để train thì model có thể không phù hợp user miễn phí.
+
+## 14. Ứng Dụng Trong AI
 
 Statistics dùng trong:
 
@@ -338,7 +514,7 @@ Statistics dùng trong:
 - Đánh giá A/B testing.
 - Theo dõi data drift sau khi deploy model.
 
-## 14. Lỗi Hay Nhầm
+## 15. Lỗi Hay Nhầm
 
 - Chỉ nhìn mean mà bỏ qua median và outlier.
 - Nghĩ correlation cao nghĩa là quan hệ nhân quả.
@@ -346,7 +522,7 @@ Statistics dùng trong:
 - Scale dữ liệu trước khi chia train/test, gây data leakage.
 - Tin vào sample nhỏ mà không kiểm tra độ đại diện.
 
-## 15. Bài Tập
+## 16. Bài Tập
 
 ### Cơ bản
 
@@ -366,7 +542,7 @@ Statistics dùng trong:
 2. Giải thích data leakage là gì bằng ví dụ scaling.
 3. Với bài toán dự đoán giá nhà, hãy liệt kê 5 feature bạn muốn thống kê trước khi train.
 
-## 16. Checklist Cần Nhớ
+## 17. Checklist Cần Nhớ
 
 - Mean cho biết trung tâm nhưng nhạy với outlier.
 - Median ổn định hơn khi dữ liệu lệch.
@@ -374,4 +550,3 @@ Statistics dùng trong:
 - Correlation đo quan hệ tuyến tính, không chứng minh nhân quả.
 - Sampling giúp ước lượng population từ một phần dữ liệu.
 - Train/validation/test split giúp đánh giá model công bằng hơn.
-

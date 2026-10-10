@@ -1,263 +1,172 @@
-Nếu mục tiêu của bạn là AI Engineer theo hướng đi làm thực tế hiện nay, bạn nên hiểu đơn giản là:
-AI Engineer = Software Engineer biết xây sản phẩm dùng AI/LLM.  Không nhất thiết phải là nhà nghiên cứu ML, nhưng phải biết Python, backend, API, dữ liệu, LLM, RAG, agents, evaluation, deployment và bảo mật.
-Dưới đây là lộ trình chi tiết theo thứ tự học.
-Giai Đoạn 0: Nền tảng lập trình  Thời gian: 1-2 tháng nếu mới bắt đầu.
-Bạn cần học:
-1. Python cơ bản đến khá
-    * Biến, hàm, class, module
-    * List/dict/set, comprehension
-    * File I/O, JSON, CSV
-    * Async cơ bản
-    * Type hints
-2. Git và command line
-    * git clone, commit, branch, pull, push
-    * Terminal cơ bản
-    * Quản lý môi trường bằng venv, pip, uv hoặc conda
-3. Backend căn bản
-    * HTTP, REST API
-    * FastAPI
-    * Authentication cơ bản
-    * Database: PostgreSQL hoặc SQLite
-    * Docker cơ bản
-Project nên làm:
-* Todo API bằng FastAPI + SQLite/PostgreSQL
-* Web app nhỏ gọi API backend
-* Script đọc file CSV, xử lý dữ liệu, xuất báo cáo
-Giai Đoạn 1: Nền tảng AI/ML  Thời gian: 1.5-3 tháng.
-Bạn không cần học quá sâu toán như researcher, nhưng cần hiểu đủ để không dùng AI như “hộp đen”.
-Cần học:
-* Toán vừa đủ
-    * Linear algebra: vector, matrix, dot product, cosine similarity
-    * Probability: distribution, conditional probability
-    * Statistics: mean, variance, correlation, sampling
-    * Calculus cơ bản: gradient là gì
-* Machine Learning căn bản
-* Supervised vs unsupervised learning
-    * Train/validation/test split
-    * Overfitting, underfitting
-    * Regression, classification
-    * Metrics: accuracy, precision, recall, F1, ROC-AUC
-    * Feature engineering
-* Deep Learning căn bản
-    * Neural network
-    * Embedding
-    * Transformer là gì
-    * Attention hoạt động ở mức khái niệm
-Project nên làm:
-* Dự đoán giá nhà bằng scikit-learn
-* Phân loại sentiment review
-* Tìm kiếm văn bản bằng embedding + cosine similarity
-Giai Đoạn 2: LLM và Generative AI  Thời gian: 1-2 tháng.
-Đây là phần quan trọng nhất cho AI Engineer hiện nay.
-Cần học:
-1. Cách dùng LLM API
-    * Prompting
-    * System/user/developer message
-    * Structured output JSON
-    * Function calling/tools
-    * Streaming response
-    * Token, context window, cost, latency
-Nguồn nên học:
-* OpenAI API Quickstart
-* OpenAI Help Center: start exploring the API
-1. Prompt engineering thực dụng
-    * Viết instruction rõ
-    * Few-shot examples
-    * Output schema
-    * Guardrails
-    * Cách giảm hallucination
-2. Embeddings và semantic search
-    * Text embedding
-    * Vector database
-    * Similarity search
-    * Chunking tài liệu
-    * Metadata filtering
-Project nên làm:
-* Chatbot trả lời theo tài liệu PDF
-* Tool tóm tắt email/tài liệu
-* App sinh JSON theo schema từ văn bản tự nhiên
-Giai Đoạn 3: RAG - Retrieval Augmented Generation  Thời gian: 1-2 tháng.
-RAG là kỹ năng bắt buộc nếu muốn làm AI app thực tế.
-Cần học:
-1. Pipeline RAG
-    * Load document
-    * Split/chunk
-    * Embed
-    * Store vector DB
-    * Retrieve
-    * Rerank
-    * Generate answer with citations
-2. Vector databases
-    * Chroma hoặc FAISS để học local
-    * Qdrant, Weaviate, Pinecone hoặc pgvector cho production
-3. Các vấn đề thực tế
-    * Chunk size bao nhiêu?
-    * Truy xuất sai tài liệu thì xử lý sao?
-    * Làm sao có citation?
-    * Làm sao đánh giá câu trả lời đúng/sai?
-Project nên làm:
-* Internal company knowledge bot
-* Chatbot hỏi đáp trên bộ PDF/Notion/website
-* Search engine nhỏ cho tài liệu cá nhân
-Giai Đoạn 4: Agents và Tool Use  Thời gian: 1-2 tháng.
-Agent không phải lúc nào cũng cần, nhưng đang là kỹ năng rất quan trọng.
-Cần học:
-1. Tool calling
-    * LLM gọi function
-    * Validate input/output
-    * Retry khi lỗi
-    * Không cho model tự do chạy tool nguy hiểm
-2. Agent workflow
-    * Plan
-    * Act
-    * Observe
-    * Reflect
-    * Multi-step task
-3. Framework
-    * LangGraph cho workflow agent có state
-    * LangChain dùng vừa đủ, không phụ thuộc mù quáng
-    * LlamaIndex cho RAG/document apps
-    * Hugging Face agents nếu muốn học open-source ecosystem
-Nguồn nên xem:
-* LangGraph official docs
-* 
-* Hugging Face AI Agents Course
-* 
-* DeepLearning.AI short courses
-Project nên làm:
-* Agent đọc email, phân loại, draft reply
-* Agent tra cứu web + tổng hợp báo cáo
-* Agent dùng database tool để trả lời câu hỏi kinh doanh
-* Multi-step customer support agent
-Giai Đoạn 5: LLMOps và Production  Thời gian: 2-3 tháng.
-Đây là phần phân biệt người “biết demo” với người “làm được sản phẩm thật”.
-Cần học:
-1. Evaluation
-    * Test set cho prompt
-    * Golden answers
-    * LLM-as-judge
-    * Human review
-    * Regression test cho prompt/model
-2. Monitoring
-    * Log prompt/response
-    * Latency
-    * Cost
-    * Error rate
-    * User feedback
-    * Hallucination reports
-3. Deployment
-    * FastAPI service
-    * Docker
-    * Background jobs
-    * Queue: Redis/Celery
-    * Cloud: AWS/GCP/Azure/Fly.io/Render
-4. Security
-    * Prompt injection
-    * Data leakage
-    * API key management
-    * Rate limit
-    * PII handling
-    * Tool permission boundaries
-Nguồn nên học:
-* 
-* DeepLearning.AI LLMOps course
-Project nên làm:
-* Deploy chatbot RAG có logging, feedback, dashboard cost
-* Tạo bộ eval tự động cho chatbot
-* Thêm rate limit, auth, prompt injection checks
-Giai Đoạn 6: Open-source Models và Fine-tuning  Thời gian: 2-4 tháng, học sau khi đã vững API/RAG.
-Cần học:
-1. Hugging Face ecosystem
-    * Transformers
-    * Tokenizers
-    * Datasets
-    * Inference API
-    * Model Hub
-2. Fine-tuning căn bản
-    * SFT
-    * LoRA/QLoRA
-    * Instruction tuning
-    * Khi nào nên fine-tune, khi nào chỉ cần RAG/prompting
-3. Model serving
-    * vLLM
-    * TGI
-    * Ollama cho local dev
-    * Quantization
-Project nên làm:
-* Fine-tune model nhỏ cho phân loại intent
-* Deploy local LLM API
-* So sánh GPT API vs open-source model cho cùng một task
-Lộ trình 6 tháng thực tế
-Tháng 1:
-* Python, Git, FastAPI, SQL, Docker cơ bản
-* Làm 2 backend project nhỏ
-Tháng 2:
-* ML căn bản, embeddings, vector search
-* Làm semantic search app
-Tháng 3:
-* OpenAI API hoặc model API tương tự
-* Prompting, structured output, tool calling
-* Làm chatbot tài liệu đơn giản
-Tháng 4:
-* RAG nâng cao
-* Vector DB, reranking, citations, evaluation
-* Làm knowledge base chatbot hoàn chỉnh
-Tháng 5:
-* Agents, LangGraph, workflow automation
-* Làm agent dùng tools: search, database, email, file
-Tháng 6:
-* Production, LLMOps, monitoring, security, deployment
-* Deploy 1 sản phẩm hoàn chỉnh có auth, logs, eval, cost tracking
-Portfolio Nên Có
-Nếu muốn đi xin việc AI Engineer, bạn nên có ít nhất 3 project tử tế:
-1. RAG Knowledge Assistant
-    * Upload PDF/documents
-    * Chat với citation
-    * Vector DB
-    * Evaluation
-    * Deploy online
-2. AI Agent Workflow
-    * Agent dùng tools
-    * Có state/memory
-    * Có retry/error handling
-    * Không chỉ là demo chat
-3. LLM Production App
-    * FastAPI backend
-    * Auth
-    * Logging
-    * Monitoring cost/latency
-    * Docker deploy
-    * Test cases
-Thứ tự học khuyến nghị
-Nếu bạn đang bắt đầu từ gần số 0:
-1. Python
-2. Git + terminal
-3. FastAPI + SQL
-4. ML căn bản
-5. Embeddings
-6. OpenAI API/LLM API
-7. RAG
-8. Vector database
-9. Agents/tool calling
-10. Evaluation
-11. Deployment
-12. Security
-13. Fine-tuning/open-source models
-Không nên học theo thứ tự này lúc đầu
-* Đừng lao ngay vào fine-tuning model lớn.
-* Đừng học quá sâu toán trước khi biết build app.
-* Đừng chỉ học prompt engineering mà bỏ qua backend.
-* Đừng chỉ dùng LangChain mà không hiểu RAG/tool calling bên dưới.
-* Đừng làm chatbot demo không có eval, logging, deployment.
-Stack gợi ý cho người mới
-* Language: Python
-* Backend: FastAPI
-* Database: PostgreSQL
-* Vector DB: Chroma lúc học, Qdrant hoặc pgvector khi nghiêm túc hơn
-* LLM API: OpenAI API hoặc provider tương đương
-* RAG/Agents: LangGraph, LlamaIndex, dùng vừa đủ
-* Frontend: Streamlit cho demo nhanh, Next.js nếu muốn sản phẩm đẹp
-* Deploy: Docker + Render/Fly.io/AWS/GCP
-* Monitoring: logs trước, sau đó thêm tracing/eval tools
-Nếu bạn muốn đi nhanh nhất, hãy học theo hướng build project trước, lấp kiến thức sau. Với AI Engineer, portfolio có sản phẩm chạy thật thường giá trị hơn việc chỉ có chứng chỉ.
+# LỘ TRÌNH HỌC AI ENGINEER TỪ CON SỐ 0
 
+> **Bản thiết kế chuẩn thực chiến:** Kết hợp nền tảng Phần mềm, Core ML/DL và Hệ sinh thái GenAI / LLM hiện đại  
+> ⏱️ **Thời gian:** 6 – 9 tháng (khoảng 10–12 giờ/tuần) &nbsp;|&nbsp; 🎯 **Mục tiêu:** AI Engineer thực chiến (Production-Ready) &nbsp;|&nbsp; 📌 **Phương pháp:** Software-first, Learn-by-doing (70% Thực hành / 30% Lý thuyết)  
+> 📖 **Tài liệu học tập:** [Sổ tay thuật ngữ (GLOSSARY.md)](./docs/GLOSSARY.md) &nbsp;|&nbsp; ⚙️ [Cơ chế hoạt động của AI (AI_OPERATING_MODELS.md)](./docs/AI_OPERATING_MODELS.md) &nbsp;|&nbsp; 🗺️ [Bản đồ các mô hình (AI_MODELS_GUIDE.md)](./docs/AI_MODELS_GUIDE.md)
+
+---
+
+## 🗺️ TỔNG QUAN LỘ TRÌNH 6 GIAI ĐOẠN
+
+| Giai đoạn | Chủ đề trọng tâm | Thời lượng | Đầu ra cốt lõi |
+| :--- | :--- | :---: | :--- |
+| **Giai đoạn 1** | Python nâng cao, FastAPI, Pydantic, SQL & Database, Git & CLI | 3 – 4 tuần | Xây dựng RESTful Data & CRUD API |
+| **Giai đoạn 2** | Toán thực dụng, ML Scikit-Learn & Transformer basics | 4 – 5 tuần | Sentiment Classifier hoàn chỉnh |
+| **Giai đoạn 3** | LLM APIs, Prompt Nâng cao, Function Calling, Prompt Caching & Ollama | 2 – 3 tuần | Smart Customer Support Bot |
+| **Giai đoạn 4** | RAG Pipeline, Hybrid Search, Vector DB, Reranking & **RAG Evaluation** | 4 – 5 tuần | Enterprise Document Q&A (PDF) kèm Test Suite |
+| **Giai đoạn 5** | AI Agents, LangGraph, Multi-Agent & Tool Calling | 3 – 4 tuần | Autonomous Market Research Agent |
+| **Giai đoạn 6** | Fine-tuning (LoRA), LLMOps, CI/CD Evaluation & Docker Deploy | 4 – 5 tuần | Production-Ready Domain Assistant |
+
+---
+
+## 🚀 CHI TIẾT CÁC GIAI ĐOẠN
+
+### Giai đoạn 1: Nền tảng Python & Kỹ thuật Phần mềm (3 – 4 tuần)
+
+**🎯 Mục tiêu:** Một AI Engineer giỏi trước hết phải là một Software Engineer vững tay. Bạn cần làm chủ Python, xử lý dữ liệu, thao tác Database và xây dựng RESTful API chuẩn production.
+
+#### 1. Kiến thức cốt lõi:
+- **Python nâng cao:** OOP (Lập trình hướng đối tượng), Type Hinting (`typing`), Async/Await (`asyncio`), Generators, Decorators.
+- **Môi trường & Quản lý gói:** Virtual environments (`venv`, `poetry` hoặc `uv`), Git & GitHub (Branching, Merge, PR).
+- **Cơ sở dữ liệu & ORM:** SQL cơ bản (PostgreSQL/SQLite), kết nối và thao tác dữ liệu an toàn qua ORM (`SQLAlchemy` hoặc `SQLModel`).
+- **Xử lý dữ liệu & Text Cleaning:** NumPy (ma trận, vector), Pandas (làm sạch dữ liệu, bảng biểu, aggregation), chuẩn hóa văn bản (Unicode Normalization tiếng Việt, Regex, xóa nhiễu HTML/Markdown).
+- **Backend cơ bản:** Xây dựng RESTful API với FastAPI và Pydantic để validate dữ liệu đầu vào/ra chuyên nghiệp.
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Xây dựng File Processing & Analysis Microservice
+1. Viết một FastAPI service cho phép người dùng upload file CSV/JSON chứa dữ liệu đơn hàng hoặc người dùng.
+2. Dùng Pandas để làm sạch, chuẩn hóa text và thống kê: doanh thu trung bình, top sản phẩm, tỉ lệ churn,...
+3. Lưu kết quả phân tích và lịch sử xử lý vào cơ sở dữ liệu PostgreSQL qua SQLAlchemy/SQLModel.
+4. Xử lý bất đồng bộ (`asyncio`) nếu file có kích thước lớn để tránh block main thread.
+5. Trả kết quả JSON chuẩn hóa qua schema Pydantic. Viết unit test hoàn chỉnh với `pytest`.
+
+---
+
+### Giai đoạn 2: Nền tảng Machine Learning & Deep Learning (4 – 5 tuần)
+
+**🎯 Mục tiêu:** Hiểu bản chất các mô hình học máy và cách hoạt động của mạng nơ-ron (Neural Network) để không coi AI như một 'hộp đen'.
+
+#### 1. Kiến thức cốt lõi:
+- **Toán ứng dụng thực chiến:** Đại số tuyến tính (Vector, Dot product, Cosine similarity - nền tảng của Vector Search & Embeddings), Giải tích (Đạo hàm, Gradient Descent), Xác suất thống kê cơ bản.
+- **Traditional ML (Scikit-Learn):** Phân loại (Logistic Regression, Random Forest, XGBoost), Đánh giá mô hình (Precision, Recall, F1-Score, ROC-AUC, Confusion Matrix).
+- **Deep Learning (PyTorch):** Mạng nơ-ron truyền thẳng (MLP), Hàm mất mát (Loss functions), Tối ưu hóa (Adam, SGD).
+- **Kiến trúc Transformer:** Cơ chế Self-Attention, Encoder-Decoder, khái niệm Tokenizer và Embeddings (cực kỳ quan trọng cho các giai đoạn sau).
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Xây dựng hệ thống phân loại cảm xúc phản hồi khách hàng (Sentiment Classifier)
+1. Lấy dataset đánh giá (ví dụ: IMDb hoặc review sản phẩm Shopee/Amazon).
+2. Tiền xử lý văn bản, tạo text embeddings (dùng TF-IDF trước, sau đó thử với pretrained embedding từ Hugging Face).
+3. Huấn luyện một mô hình bằng PyTorch hoặc XGBoost để phân loại (Tích cực / Tiêu cực / Trung lập).
+4. Đóng gói mô hình thành một hàm dự đoán, log lại Confusion Matrix và F1-score.
+
+---
+
+### Giai đoạn 3: Làm chủ LLM APIs & Prompt Engineering nâng cao (2 – 3 tuần)
+
+**🎯 Mục tiêu:** Tích hợp các mô hình ngôn ngữ lớn (OpenAI, Gemini, Claude, Llama cục bộ) vào ứng dụng phần mềm một cách tin cậy, có cấu trúc và tối ưu chi phí.
+
+#### 1. Kiến thức cốt lõi:
+- **API Foundations:** Chat Completion APIs, Token limits, Context Window, Streaming responses, Parameters (`temperature`, `top_p`, `seed`).
+- **Prompt Engineering:** Few-shot prompting, Chain-of-Thought (CoT), ReAct, Role-based prompting.
+- **Structured Output:** Ép LLM trả về đúng định dạng JSON/Pydantic schema (Instructor, OpenAI Structured Outputs, Outlines).
+- **Function Calling / Tool Use:** Dạy LLM biết khi nào cần gọi hàm ngoài (gọi API thời tiết, tra cứu DB, tính toán).
+- **Prompt Caching & Tối ưu chi phí:** Tận dụng tính năng Prompt Caching (Anthropic / OpenAI / Gemini) để giảm 50–80% chi phí token và giảm độ trễ phản hồi.
+- **Chạy model local:** Cài đặt và sử dụng Ollama hoặc vLLM để chạy mô hình mã nguồn mở (Llama 3, Qwen, Mistral) trên máy tính cá nhân/GPU.
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Smart Customer Support Bot với Function Calling & Prompt Caching
+1. Xây dựng trợ lý ảo hỗ trợ kiểm tra đơn hàng cho sàn thương mại điện tử.
+2. Tích hợp Function Calling: Nếu khách hỏi *"Đơn hàng #1234 của tôi bao giờ tới?"*, LLM tự nhận diện intent và gọi hàm `get_order_status(order_id='1234')` từ database giả lập.
+3. Kích hoạt Prompt Caching cho phần System Instructions dài để tối ưu chi phí.
+4. Output luôn trả về dạng JSON có cấu trúc gồm: `intent`, `message_to_user`, `action_taken`.
+
+---
+
+### Giai đoạn 4: RAG (Retrieval-Augmented Generation), Vector DB & Evaluation (4 – 5 tuần)
+
+**🎯 Mục tiêu:** Giải quyết bài toán lớn nhất của doanh nghiệp: Đưa dữ liệu nội bộ (PDF, Word, Notion, SQL) vào LLM mà không cần train lại model, hạn chế hallucination (bịa đặt thông tin) và **đo lường độ chính xác bằng số liệu cụ thể (Evaluation)**.
+
+#### 1. Kiến thức cốt lõi:
+- **Quy trình RAG cơ bản:** Ingestion ➔ Chunking (Fixed-size, Recursive, Semantic) ➔ Embedding (OpenAI `text-embedding-3`, BGE, Nomic) ➔ Vector Storage ➔ Retrieval ➔ Generation.
+- **Vector Databases:** Hiểu và thực hành thành thạo với ChromaDB, Qdrant hoặc pgvector (PostgreSQL).
+- **Advanced RAG (RAG nâng cao):** Các kỹ thuật tối ưu độ chính xác:
+  - **Hybrid Search:** Kết hợp Dense Retrieval (Vector search) + Sparse Retrieval (BM25 / Keyword search).
+  - **Re-ranking:** Dùng mô hình Cross-Encoder (như Cohere Rerank, BGE-Reranker) để lọc lại top kết quả phù hợp nhất.
+  - **Query Transformation:** Rewrite query, Multi-query generation, HyDE (Hypothetical Document Embeddings).
+  - **Document Parsing:** Trích xuất bảng biểu, cấu trúc văn bản từ PDF (LlamaParse, Marker, Unstructured).
+- **RAG Evaluation (Đánh giá định lượng):** Tránh cái bẫy "Vibe Check" (chỉ thử bằng mắt vài câu):
+  - Xây dựng **Ground Truth Test Set** (bộ 30 – 50 câu hỏi có sẵn đáp án chuẩn và tài liệu trích dẫn).
+  - Đo lường chỉ số tìm kiếm: **Hit Rate**, **MRR** (Mean Reciprocal Rank).
+  - Đo lường chất lượng câu trả lời bằng **Ragas** hoặc **LLM-as-a-judge**: **Faithfulness** (độ trung thực, chống hallucination), **Answer Relevance** (độ trúng trọng tâm), **Context Precision/Recall** (chất lượng đoạn trích xuất).
+- **Semantic Caching:** Sử dụng Redis để lưu cache các câu hỏi tương đồng ngữ nghĩa, trả kết quả ngay lập tức mà không cần gọi lại LLM.
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Trợ lý tra cứu tài liệu doanh nghiệp kèm Evaluation Test Suite
+1. Ingest kho tài liệu (tối thiểu 5 file PDF dài chứa bảng biểu, điều khoản).
+2. Áp dụng Recursive Chunking + Pretrained Vietnamese/Multilingual Embedding.
+3. Cài đặt Hybrid Search (BM25 + Vector) và Re-ranking để tăng độ chính xác.
+4. Tích hợp Semantic Cache (Redis) cho các câu hỏi phổ biến.
+5. **Chạy Evaluation Suite:** Tự tạo bộ test 30 câu hỏi, chạy đo điểm qua Ragas và xuất báo cáo so sánh: RAG cơ bản vs RAG nâng cao (chứng minh điểm Faithfulness tăng > 15%).
+6. Giao diện: Hiển thị câu trả lời kèm Citation (trích dẫn chính xác tên tài liệu, số trang hoặc đoạn văn bản gốc).
+
+---
+
+### Giai đoạn 5: AI Agents & Hệ thống Tự hành (3 – 4 tuần)
+
+**🎯 Mục tiêu:** Xây dựng hệ sinh thái AI có khả năng tự lập kế hoạch (Planning), suy luận qua nhiều bước (Multi-step Reasoning), sử dụng công cụ và ghi nhớ bối cảnh (Long-term Memory).
+
+#### 1. Kiến thức cốt lõi:
+- **Kiến trúc Agent:** ReAct framework (Reasoning + Acting), Plan-and-Solve, Reflection / Self-Correction.
+- **Frameworks:** LangGraph (Xây dựng Agent dưới dạng đồ thị trạng thái tuần hoàn Stateful Graph – chuẩn công nghiệp hiện nay), LlamaIndex / CrewAI (Phù hợp cho multi-agent collaboration).
+- **Bộ nhớ (Memory):** Short-term (in-context window), Long-term (Semantic Memory dùng Vector Store / SQL).
+- **Human-in-the-loop (HITL):** Cơ chế dừng lại để con người duyệt trước khi Agent thực hiện các hành động nhạy cảm (như gửi email, xóa DB, thanh toán).
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Tự động hóa nghiên cứu thị trường (Automated Market Research Agent)
+1. Người dùng nhập tên một công ty hoặc sản phẩm (ví dụ: *"Phân tích xu hướng xe điện VinFast"*).
+2. **Agent 1 (Searcher):** Tự động tìm kiếm web (dùng DuckDuckGo / Tavily API), tổng hợp các bài báo gần nhất.
+3. **Agent 2 (Analyst):** Đọc nội dung, trích xuất điểm mạnh, điểm yếu, đối thủ cạnh tranh.
+4. **Agent 3 (Writer):** Tổng hợp thành báo cáo Markdown hoàn chỉnh kèm bảng biểu so sánh.
+5. Xây dựng bằng LangGraph có quản lý state và xử lý lỗi fallback nếu một link bị chết.
+
+---
+
+### Giai đoạn 6: Fine-tuning, LLMOps & Đưa vào Production (4 – 5 tuần)
+
+**🎯 Mục tiêu:** Đưa ứng dụng AI từ notebook ra môi trường thật với độ trễ thấp, chi phí tối ưu, có giám sát tự động và đảm bảo an toàn.
+
+#### 1. Kiến thức cốt lõi:
+- **Fine-tuning (Tinh chỉnh mô hình):** Khi nào nên dùng RAG, khi nào nên Fine-tune? Kỹ thuật PEFT / LoRA, QLoRA (huấn luyện tham số hiệu quả trên GPU vừa). Thư viện: Hugging Face transformers, peft, trl, hoặc Unsloth.
+- **CI/CD Evaluation & LLM Testing:** Tự động chạy test suite đo lường độ chính xác (Ragas, DeepEval) mỗi khi cập nhật prompt/model trước khi merge code vào production.
+- **LLMOps & Giám sát (Observability):** Tracing toàn bộ luồng gọi, đo token tiêu thụ, latency, chi phí thực tế: LangSmith, Phoenix (Arize), hoặc OpenTelemetry.
+- **Bảo mật AI (AI Safety):** Ngăn chặn Prompt Injection, Jailbreak, rò rỉ PII (thông tin cá nhân) bằng Guardrails (NeMo Guardrails, Llama Guard).
+- **Triển khai (Deployment):** Đóng gói Docker, cấu hình vLLM trên Cloud GPU (RunPod, Modal, AWS SageMaker) để tối ưu throughput với PagedAttention.
+
+#### 🛠️ BÀI TẬP THỰC TẾ (PROJECT): Production-ready Legal or Medical Assistant (Capstone Project)
+1. Tự chuẩn bị bộ dữ liệu domain chuyên ngành (ví dụ: Luật lao động hoặc Y tế cơ bản).
+2. Sử dụng LoRA/QLoRA để fine-tune một model nhỏ (như Llama 3 8B hoặc Qwen 2.5 7B) theo phong cách trả lời chuyên gia.
+3. Kết hợp hệ thống RAG để cập nhật các văn bản mới nhất.
+4. Thiết lập pipeline đánh giá tự động (Evaluation Test Suite) đo lường độ chính xác (Ragas score > 0.85).
+5. Đóng gói Docker, tích hợp LangSmith để track log và deploy API có rate limit, caching (Redis).
+
+---
+
+## 💻 BỘ CÔNG CỤ (TECH STACK) CẦN LÀM CHỦ
+
+| Mảng kỹ năng | Công nghệ / Thư viện đề xuất | Vai trò trong hệ thống |
+| :--- | :--- | :--- |
+| **Ngôn ngữ & Backend** | Python 3.11+, FastAPI, Pydantic, Poetry/uv | Xây dựng core logic, xử lý dữ liệu và REST API chuẩn |
+| **Database & ORM** | PostgreSQL, SQLite, SQLAlchemy / SQLModel | Lưu trữ dữ liệu quan hệ, lịch sử chat và metadata |
+| **Core ML & DL** | Scikit-Learn, PyTorch, Hugging Face Transformers | Nắm bản chất thuật toán, text embedding và attention |
+| **LLM Orchestration** | LangGraph, LlamaIndex, Instructor | Điều phối flow gọi model, quản lý state và ép kiểu JSON |
+| **Vector DB & Search** | Qdrant, ChromaDB, pgvector (PostgreSQL) | Lưu trữ vector embeddings, tìm kiếm tương đồng ngữ nghĩa |
+| **Caching & Tối ưu** | Redis (Semantic Cache), Provider Prompt Caching | Giảm 50–80% chi phí gọi API và tăng tốc độ phản hồi |
+| **Evaluation & Tracing** | Ragas, DeepEval, LangSmith, Phoenix | Đo lường độ chính xác (RAG metric), track log, latency |
+| **Inference & Fine-tuning** | Ollama, vLLM, Unsloth, PEFT / LoRA | Chạy model local tốc độ cao, tinh chỉnh model chuyên ngành |
+| **DevOps & Cloud** | Docker, Git, RunPod / Modal, AWS / GCP | Đóng gói container, CI/CD và triển khai ứng dụng lên cloud |
+
+---
+
+## 💡 4 NGUYÊN TẮC VÀNG ĐỂ HỌC HIỆU QUẢ
+
+- 🎯 **1. Đừng học vẹt lý thuyết (Learn by Building):** Áp dụng nguyên tắc 70/30 (70% thời gian thực hành code và debug, 30% lý thuyết). Viết 10 dòng code gọi API và xử lý lỗi thực tế sẽ nhớ lâu hơn đọc 5 bài blog.
+- 📊 **2. Nói chuyện bằng số liệu, bỏ qua "Vibe Check":** Không bao giờ kết luận model tốt chỉ bằng 3–5 câu test thử. Hãy tạo bộ Ground Truth Test Set và đo lường bằng số liệu (Accuracy, Faithfulness, Hit Rate).
+- 🚀 **3. Xây dựng 'Proof of Concept' công khai:** Mỗi bài tập sau khi hoàn thành, hãy push lên GitHub kèm file `README.md` giải thích kiến trúc, sơ đồ luồng (flowchart) và video demo 1 phút. Đây chính là chiếc CV thuyết phục nhất khi đi phỏng vấn.
+- 💼 **4. Tư duy hướng sản phẩm & Tối ưu chi phí:** Một AI Engineer giỏi không phải là người dùng model to nhất hay đắt nhất, mà là người biết chọn model nhỏ nhất, rẻ nhất, dùng cache hiệu quả nhưng vẫn giải quyết đúng bài toán của người dùng.
+
+> 🌟 **Hành trình trở thành AI Engineer đòi hỏi sự kiên trì và thực hành liên tục. Hãy bắt đầu ngay từ những dòng code nhỏ nhất hôm nay!**

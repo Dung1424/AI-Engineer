@@ -1,8 +1,0 @@
-[
-  {"id": "python-env", "text": "Virtual environment cô lập dependency Python giữa các project."},
-  {"id": "rag", "text": "RAG truy xuất tài liệu liên quan rồi đưa context cho mô hình sinh câu trả lời."},
-  {"id": "embedding", "text": "Embedding biến văn bản thành vector số để đo mức tương đồng ngữ nghĩa."},
-  {"id": "precision", "text": "Precision đo tỷ lệ dự đoán dương tính đúng trên tất cả dự đoán dương tính."},
-  {"id": "recall", "text": "Recall đo tỷ lệ mẫu dương tính thật được mô hình tìm thấy."},
-  {"id": "overfitting", "text": "Overfitting xảy ra khi mô hình học quá sát dữ liệu train và tổng quát kém."}
-]

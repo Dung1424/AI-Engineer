@@ -1,7 +1,0 @@
-[
-  "Tóm tắt RAG trong tối đa 80 từ.",
-  "Trích xuất JSON gồm name và email từ: An Nguyen <an@example.com>.",
-  "Viết hàm Python kiểm tra palindrome và nêu độ phức tạp.",
-  "Phân loại intent: Tôi muốn hoàn tiền đơn A102.",
-  "Nêu ba rủi ro khi cho agent chạy tool không giới hạn."
-]

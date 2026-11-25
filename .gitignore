@@ -91,3 +91,6 @@ mlruns/
 
 # Docker
 docker-compose.override.yml
+
+# Generated learning reports
+01-python-and-data/outputs/

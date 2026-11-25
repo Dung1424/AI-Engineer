@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Quản lý sản phẩm · Python Lab</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Trang quản lý sản phẩm">
+      <span class="brand-mark">07</span>
+      <span>PYTHON LAB<span class="brand-caption">THỰC HÀNH CRUD</span></span>
+    </a>
+    <span id="connection-status" class="connection" role="status">Đang kết nối</span>
+  </header>
+
+  <main>
+    <section class="page-heading">
+      <p class="eyebrow">CHẶNG 1 / PYTHON VÀ DỮ LIỆU</p>
+      <h1>Quản lý sản phẩm</h1>
+      <p>Thực hành thêm, xem, sửa và xóa dữ liệu qua API.</p>
+    </section>
+
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <div class="workspace">
+      <section class="panel editor-panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <span class="section-number">01</span>
+          <div><h2 id="form-title">Thêm sản phẩm</h2><p id="form-caption">Nhập thông tin để tạo một sản phẩm mới.</p></div>
+        </div>
+        <form id="product-form">
+          <label for="product-name">Tên sản phẩm <span class="required">*</span></label>
+          <input id="product-name" name="name" placeholder="Ví dụ: Sổ tay ghi chép" maxlength="120" required autocomplete="off">
+
+          <div class="field-row">
+            <div>
+              <label for="product-price">Giá bán <span class="required">*</span></label>
+              <div class="input-unit"><input id="product-price" name="price_vnd" type="number" min="0" max="1000000000000" step="1" required placeholder="0"><span>₫</span></div>
+            </div>
+            <div>
+              <label for="product-stock">Tồn kho</label>
+              <input id="product-stock" name="stock" type="number" min="0" max="1000000" step="1" value="0" required>
+            </div>
+          </div>
+          <p class="field-hint">Nhập giá nguyên đồng và số lượng không âm.</p>
+
+          <label for="product-description">Mô tả</label>
+          <textarea id="product-description" name="description" rows="4" maxlength="1000" placeholder="Một vài thông tin về sản phẩm…"></textarea>
+
+          <div class="form-actions">
+            <button id="save-button" class="button button-primary" type="submit">Lưu sản phẩm</button>
+            <button id="reset-button" class="button button-secondary" type="button">Nhập lại</button>
+          </div>
+        </form>
+        <div class="editor-note"><span class="note-dot"></span><p>Dữ liệu được lưu trong SQLite và vẫn còn khi bạn tải lại trang.</p></div>
+      </section>
+
+      <section class="panel list-panel" aria-labelledby="list-title">
+        <div class="panel-heading list-heading">
+          <span class="section-number">02</span>
+          <div><h2 id="list-title">Danh sách sản phẩm <span id="product-total" class="count-badge">…</span></h2><p>Tìm và quản lý các sản phẩm đã lưu.</p></div>
+          <button id="reload-button" class="icon-button" type="button" aria-label="Tải lại danh sách" title="Tải lại danh sách">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 7a7 7 0 0 1 11.5-1L20 9M4 15l2.4 3A7 7 0 0 0 18 17"/></svg>
+          </button>
+        </div>
+        <form id="search-form" class="search-form" role="search">
+          <label class="visually-hidden" for="search-input">Tìm theo tên sản phẩm</label>
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+            <input id="search-input" type="search" maxlength="120" placeholder="Tìm theo tên sản phẩm…" autocomplete="off">
+          </div>
+          <button class="button button-secondary" type="submit">Tìm kiếm</button>
+        </form>
+
+        <div id="list-state" class="list-state" role="status">
+          <div class="empty-symbol" aria-hidden="true">＋</div>
+          <h3 id="list-state-title">Đang tải dữ liệu…</h3>
+          <p id="list-state-description">Chờ một chút để kết nối với API.</p>
+        </div>
+
+        <div id="table-container" class="table-container" hidden>
+          <table>
+            <thead><tr><th>Sản phẩm</th><th class="numeric">Giá bán</th><th class="numeric">Tồn kho</th><th class="actions-column"><span class="visually-hidden">Thao tác</span></th></tr></thead>
+            <tbody id="product-rows"></tbody>
+          </table>
+        </div>
+
+        <footer class="list-footer">
+          <p id="page-summary">Chưa có dữ liệu</p>
+          <div class="pagination" aria-label="Phân trang sản phẩm">
+            <button id="previous-button" class="page-button" type="button" disabled aria-label="Trang trước">←</button>
+            <span id="page-label">1 / 1</span>
+            <button id="next-button" class="page-button" type="button" disabled aria-label="Trang sau">→</button>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+    <footer class="page-footer"><span>Học từ giao diện đến từng lớp xử lý.</span><a href="/docs" target="_blank" rel="noopener">Khám phá API <span aria-hidden="true">↗</span></a></footer>
+  </main>
+
+  <template id="product-row-template">
+    <tr>
+      <td><span class="product-name"></span><span class="product-description"></span><span class="product-id"></span></td>
+      <td class="numeric product-price"></td>
+      <td class="numeric"><span class="stock-badge"></span></td>
+      <td><div class="row-actions"><button class="text-button edit-button" type="button">Sửa</button><button class="text-button delete-button" type="button">Xóa</button></div></td>
+    </tr>
+  </template>
+</body>
+</html>

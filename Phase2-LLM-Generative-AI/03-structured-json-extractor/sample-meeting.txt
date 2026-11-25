@@ -1,3 +1,0 @@
-Họp dự án Knowledge Bot ngày 20/07/2026.
-Tham dự: An, Bình và Chi.
-Quyết định dùng pgvector cho phiên bản đầu tiên. Bình sẽ chuẩn bị 30 câu hỏi đánh giá trước ngày 25/07/2026, ưu tiên cao. Chi kiểm tra chất lượng citation. Chưa chốt ngày demo.
